@@ -1,0 +1,25 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=2069
+
+In theory, this plugin provides a framework for context-sensitive 
+tags-based completion and code skeletons (requires tSkeleton vimscript 
+#1160). I.e. the completion function checks the context and filters the 
+available tags accordingly. You should thus get only those tags included 
+in the list that are actually useful in a given context (eg because the 
+are valid methods of a certain class).
+
+In practice, the context sensitivity is currently only implemented for 
+Java and requires a tags file for the JDK sources to be created (see the 
+notes on |tlib#tag#Retrieve()| for details). It also makes certain 
+assumption about how variable declarations look like, e.g. the 
+class/type name should be in the same line as the variable name; class 
+names start with an upper-case letter etc.
+
+Limitation: you have to type g:ttagecho_min_chars = 1 chars before
+completion is allowed.
+
+It shouldn't be too difficult to adapt this for other statically typed 
+languages with formal variable declarations. As the source code isn't 
+actually parsed or anything, there is little chance to use this 
+efficiently with dynamically typed languages like ruby where the 
+type/class is only known at run-time.
+
